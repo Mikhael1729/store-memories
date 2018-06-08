@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StoreMemories.Views.MemoriesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fab="clr-namespace:Refractored.FabControl;assembly=Refractored.FabControl"
+    Title="Memories"
+    BindingContext="{Binding MemoriesViewModel, Source={StaticResource Locator}}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <DataTemplate x:Key="MemoryItemTemplate">
+                <ImageCell
+                    Detail="{Binding Description}"
+                    ImageSource="{Binding Photo.ImageSource}"
+                    Text="{Binding Name}" />
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <ListView
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                ItemTemplate="{StaticResource MemoryItemTemplate}"
+                ItemsSource="{Binding MemoryList}" />
+
+            <fab:FloatingActionButtonView
+                x:Name="CreateMemoryFab"
+                AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                ColorNormal="{StaticResource PrimaryColor}"
+                ColorPressed="{StaticResource PrimaryDarkColor}"
+                ColorRipple="{StaticResource PrimaryDarkColor}"
+                ImageName="ic_add.png"
+                IsVisible="True" />
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage> 

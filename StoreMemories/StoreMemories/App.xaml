@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="StoreMemories.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:StoreMemories.ViewModels">
+    <Application.Resources>
+
+        <ResourceDictionary>
+
+            <!--  Colors  -->
+            <Color x:Key="PrimaryColor">#3F51B5</Color>
+            <Color x:Key="PrimaryDarkColor">#303F9F</Color>
+            <Color x:Key="AccentColor">#FF4081</Color>
+            <Color x:Key="BackgroundColor">#FFFFFF</Color>
+
+            <!--  View models  -->
+            <viewModels:ViewModelLocator x:Key="Locator" />
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

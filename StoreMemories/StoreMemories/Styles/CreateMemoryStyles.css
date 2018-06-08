@@ -1,0 +1,18 @@
+﻿^contentpage>scrollview{
+    padding: 20;
+}
+
+#MemoryForm>StackLayout {
+    margin: 10 0 10 0;
+}
+
+.PrimaryButton {
+    margin:10 0 0 0;
+    background-color: #6495ed;
+    color: white;
+}
+
+#TakePhotoButton {
+    background-color: #90EE90;
+    color:#556B2F;
+}

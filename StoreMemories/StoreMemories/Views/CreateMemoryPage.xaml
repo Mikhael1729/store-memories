@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StoreMemories.Views.CreateMemoryPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:ElementsLaboratory.Controls"
+    Title="Store your memory">
+
+    <ContentPage.Resources>
+
+        <StyleSheet Source="/Styles/CreateMemoryStyles.css" />
+
+        <!--  Entry  -->
+        <Style TargetType="controls:XEntry">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+
+                    <!--  Validation states  -->
+                    <VisualStateGroup x:Name="ValidationStates">
+
+                        <VisualState x:Name="Stateless">
+                            <VisualState.Setters>
+                                <Setter Property="BorderColor" Value="Gray" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="Valid">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="LightSeaGreen" />
+                                <Setter Property="BorderColor" Value="LightSeaGreen" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="Invalid">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="LightCoral" />
+                                <Setter Property="BorderColor" Value="LightCoral" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                    </VisualStateGroup>
+
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+        <!--  Editor  -->
+        <Style TargetType="controls:XEditor">
+            <Setter Property="MaxLines" Value="5" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+
+                    <!--  Validation states  -->
+                    <VisualStateGroup x:Name="ValidationStates">
+
+                        <VisualState x:Name="Valid">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="LightSeaGreen" />
+                                <Setter Property="BorderColor" Value="LightSeaGreen" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="Stateless">
+                            <VisualState.Setters>
+                                <Setter Property="BorderColor" Value="Gray" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="Invalid">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="LightCoral" />
+                                <Setter Property="BorderColor" Value="LightCoral" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                    </VisualStateGroup>
+
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+        <!--  Button  -->
+        <Style TargetType="Button">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+
+                    <!--  Common states  -->
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Focused" />
+                        <VisualState x:Name="Disabled" />
+                    </VisualStateGroup>
+
+                    <!--  Validation states  -->
+                    <VisualStateGroup x:Name="ValidationStates">
+
+                        <VisualState x:Name="Valid">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="#6495ed" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="Invalid">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="Gray" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                    </VisualStateGroup>
+
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <FlexLayout Direction="Column">
+
+                <!--  Form  -->
+                <StackLayout x:Name="MemoryForm" FlexLayout.Grow="1">
+
+                    <!--  Name  -->
+                    <StackLayout>
+                        <Label>Name</Label>
+                        <controls:XEntry
+                            x:Name="NameXEntry"
+                            IsEnabled="{Binding Source={x:Reference EntryEnabledSwitch}, Path=IsToggled}"
+                            Text="{Binding Memory.Name}"
+                            TextChanged="NameXEntry_TextChanged" />
+                    </StackLayout>
+
+                    <!--  Description  -->
+                    <StackLayout>
+                        <Label>Description</Label>
+                        <controls:XEditor
+                            x:Name="DescriptionXEditor"
+                            IsEnabled="{Binding Source={x:Reference EntryEnabledSwitch}, Path=IsToggled}"
+                            Text="{Binding Memory.Description}"
+                            TextChanged="DescriptionXEditor_TextChanged" />
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label>Photo</Label>
+                        <Image
+                            x:Name="PhotoImage"
+                            HeightRequest="300"
+                            IsVisible="False" />
+                        <Button
+                            x:Name="TakePhotoButton"
+                            Clicked="TakePhotoButton_Clicked"
+                            Text="Take a photo" />
+                    </StackLayout>
+
+                    <!--  Store button  -->
+                    <Button
+                        x:Name="StoreButton"
+                        Clicked="StoreButton_Clicked"
+                        StyleClass="PrimaryButton"
+                        Text="Store" />
+
+                    <!--  Switch  -->
+                    <StackLayout Orientation="Horizontal">
+                        <Switch x:Name="EntryEnabledSwitch" IsToggled="True" />
+                        <Label>Toggle Enabled Property</Label>
+                    </StackLayout>
+
+                </StackLayout>
+
+                <!--  If you place a visual controll here, this control will be placed at end of page because the FlexBox.Grow is equals to 1 in the previus StackLayout  -->
+
+            </FlexLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>
